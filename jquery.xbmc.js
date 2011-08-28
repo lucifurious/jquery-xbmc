@@ -233,7 +233,7 @@
 			 * @var object Our settings
 			 */
 			_this.settings = {};
-
+			
 			//*************************************************************************
 			//* Private Plug-in Methods
 			//*************************************************************************
@@ -319,7 +319,7 @@
 			 * @param error
 			 */
 			_this.JSONRPC = function(cmd,params,success,error) {
-				return _xbmcCommand('JSONRPC',_this.options.JSONRPC,cmd,params,success,error);
+				return _xbmcCommand('JSONRPC',_this.settings.namespaceMap.JSONRPC,cmd,params,success,error);
 			};
 
 			/**
@@ -330,7 +330,7 @@
 			 * @param error
 			 */
 			_this.Player = function(cmd,params,success,error) {
-				return _xbmcCommand('Player',_this.options.Player,cmd,params,success,error);
+				return _xbmcCommand('Player',_this.settings.namespaceMap.Player,cmd,params,success,error);
 			};
 
 			/**
@@ -341,7 +341,7 @@
 			 * @param error
 			 */
 			_this.AudioPlayer = function(cmd,params,success,error) {
-				return _xbmcCommand('AudioPlayer',_this.options.AudioPlayer,cmd,params,success,error);
+				return _xbmcCommand('AudioPlayer',_this.settings.namespaceMap.AudioPlayer,cmd,params,success,error);
 			};
 
 			/**
@@ -352,7 +352,7 @@
 			 * @param error
 			 */
 			_this.VideoPlayer = function(cmd,params,success,error) {
-				return _xbmcCommand('VideoPlayer',_this.options.VideoPlayer,cmd,params,success,error);
+				return _xbmcCommand('VideoPlayer',_this.settings.namespaceMap.VideoPlayer,cmd,params,success,error);
 			};
 
 			/**
@@ -363,7 +363,7 @@
 			 * @param error
 			 */
 			_this.PicturePlayer = function(cmd,params,success,error) {
-				return _xbmcCommand('PicturePlayer',_this.options.PicturePlayer,cmd,params,success,error);
+				return _xbmcCommand('PicturePlayer',_this.settings.namespaceMap.PicturePlayer,cmd,params,success,error);
 			};
 
 			/**
@@ -374,7 +374,7 @@
 			 * @param error
 			 */
 			_this.Playlist = function(cmd,params,success,error) {
-				return _xbmcCommand('Playlist',_this.options.Playlist,cmd,params,success,error);
+				return _xbmcCommand('Playlist',_this.settings.namespaceMap.Playlist,cmd,params,success,error);
 			};
 
 			/**
@@ -385,7 +385,7 @@
 			 * @param error
 			 */
 			_this.AudioPlaylist = function(cmd,params,success,error) {
-				return _xbmcCommand('AudioPlaylist',_this.options.AudioPlaylist,cmd,params,success,error);
+				return _xbmcCommand('AudioPlaylist',_this.settings.namespaceMap.AudioPlaylist,cmd,params,success,error);
 			};
 
 			/**
@@ -396,7 +396,7 @@
 			 * @param error
 			 */
 			_this.VideoPlaylist = function(cmd,params,success,error) {
-				return _xbmcCommand('VideoPlaylist',_this.options.VideoPlaylist,cmd,params,success,error);
+				return _xbmcCommand('VideoPlaylist',_this.settings.namespaceMap.VideoPlaylist,cmd,params,success,error);
 			};
 
 			/**
@@ -407,7 +407,7 @@
 			 * @param error
 			 */
 			_this.Files = function(cmd,params,success,error) {
-				return _xbmcCommand('Files',_this.options.Files,cmd,params,success,error);
+				return _xbmcCommand('Files',_this.settings.namespaceMap.Files,cmd,params,success,error);
 			};
 
 			/**
@@ -418,7 +418,7 @@
 			 * @param error
 			 */
 			_this.AudioLibrary = function(cmd,params,success,error) {
-				return _xbmcCommand('AudioLibrary',_this.options.AudioLibrary,cmd,params,success,error);
+				return _xbmcCommand('AudioLibrary',_this.settings.namespaceMap.AudioLibrary,cmd,params,success,error);
 			};
 
 			/**
@@ -429,7 +429,7 @@
 			 * @param error
 			 */
 			_this.VideoLibrary = function(cmd,params,success,error) {
-				return _xbmcCommand('VideoLibrary',_this.options.VideoLibrary,cmd,params,success,error);
+				return _xbmcCommand('VideoLibrary',_this.settings.namespaceMap.VideoLibrary,cmd,params,success,error);
 			};
 
 			/**
@@ -440,7 +440,7 @@
 			 * @param error
 			 */
 			_this.System = function(cmd,params,success,error) {
-				return _xbmcCommand('System',_this.options.System,cmd,params,success,error);
+				return _xbmcCommand('System',_this.settings.namespaceMap.System,cmd,params,success,error);
 			};
 
 			/**
@@ -451,7 +451,7 @@
 			 * @param error
 			 */
 			_this.XBMC = function(cmd,params,success,error) {
-				return _xbmcCommand('XBMC',_this.options.XBMC,cmd,params,success,error);
+				return _xbmcCommand('XBMC',_this.settings.namespaceMap.XBMC,cmd,params,success,error);
 			};
 
 			/**
@@ -462,7 +462,7 @@
 			 * @param error
 			 */
 			_this.Input = function(cmd,params,success,error) {
-				return _xbmcCommand('Input',_this.options.Input,cmd,params,success,error);
+				return _xbmcCommand('Input',_this.settings.namespaceMap.Input,cmd,params,success,error);
 			};
 
 			//*************************************************************************

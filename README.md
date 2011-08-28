@@ -7,6 +7,28 @@ This is the result and I thought I'd share.
 
 It requires the [JSON-RPC plug-in](https://github.com/datagraph/jquery-jsonrpc) by Josh Huckabee.
 
+## Example of Usage
+
+	<script type="text/javascript">
+	$(function(){
+
+		var _xbmc = new $.xbmc({
+			serverHostName : 'your.host.name.if.not.localhost'
+		});
+
+		_xbmc.JSONRPC( 'ping', function(response) {
+			if ( 'pong' != response.result ) {
+				alert('ping failed');
+			} else {
+				_xbmc.System( 'getInfoLabels', {labels:['Weather.Conditions','Weather.Temperature']}, function(response) {
+					alert(JSON.stringify(response.result));
+				});
+			}
+		});
+
+	});
+	</script>
+
 ## Authors, License, Development, Thanks
 
 #### Authors
