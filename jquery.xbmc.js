@@ -434,6 +434,7 @@
 
 			/**
 			 * The System namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#System)
+			 * See also (@link http://wiki.xbmc.org/index.php?title=InfoLabels) for all the various InfoLabels
 			 * @param cmd
 			 * @param params
 			 * @param success
