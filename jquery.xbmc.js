@@ -255,56 +255,19 @@
 			 * @param namespace
 			 * @param validCommands
 			 * @param cmd
-			 * @param params
-			 * @param success
-			 * @param error
 			 */
-			var _xbmcCommand = function(namespace,validCommands,cmd,params,success,error) {
-				//	Allow for no params being passed
-				if ( params && typeof(params) === 'function' ) {
-					error = success;
-					success = params;
-					params = {};
-				}
-
+			var _xbmcCommand = function(namespace,validCommands,cmd,options) {
 				if (-1 == $.inArray(cmd,validCommands)) {
 					throw "The command \""+cmd+"\" is not valid.";
 				} else {
-					return _send( namespace + '.' + cmd, params, success, error );
-				}
-			};
+					var _options = $.extend({},options);
 
-			/**
-			 * Sends a command to the server
-			 * @param command
-			 * @param commandParams
-			 * @param success
-			 * @param error
-			 */
-			var _send = function(command, commandParams, success, error) {
-				return $.jsonRPC.request(command, {
-
-					params : commandParams,
-
-					success : function(result,rawResult,textStatus,xhrObject) {
-						if ( success && typeof success === 'function') {
-							success.call(_this, result, textStatus,xhrObject);
-						}
-					},
-
-					error : function(result, xhrObject, textStatus, errorThrown) {
-						if ( error && typeof error === 'function') {
-							error.call(
-								_this,
-								{"error" : { "ajaxFailed" : true, "xhr" : xhrObject, "status" : textStatus, "errorThrown" : errorThrown }},
-								result,
-								xhrObject,
-								textStatus,
-								errorThrown
-							);
-						}
+					if (!_options.params) {
+						_options.params = {};
 					}
-				});
+					
+					return $.jsonRPC.request(namespace + '.' + cmd, _options);
+				}
 			};
 
 			//*************************************************************************
@@ -315,121 +278,99 @@
 			 * The JSONRPC namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#XBMC)
 			 * @param cmd
 			 * @param params
-			 * @param success
-			 * @param error
 			 */
-			_this.JSONRPC = function(cmd,params,success,error) {
-				return _xbmcCommand('JSONRPC',_this.settings.namespaceMap.JSONRPC,cmd,params,success,error);
+			_this.JSONRPC = function(cmd,params) {
+				return _xbmcCommand('JSONRPC',_this.settings.namespaceMap.JSONRPC,cmd,params);
 			};
 
 			/**
 			 * The Player namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#Player)
 			 * @param cmd
 			 * @param params
-			 * @param success
-			 * @param error
 			 */
-			_this.Player = function(cmd,params,success,error) {
-				return _xbmcCommand('Player',_this.settings.namespaceMap.Player,cmd,params,success,error);
+			_this.Player = function(cmd,params) {
+				return _xbmcCommand('Player',_this.settings.namespaceMap.Player,cmd,params);
 			};
 
 			/**
 			 * The AudioPlayer namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#AudioPlayer)
 			 * @param cmd
 			 * @param params
-			 * @param success
-			 * @param error
 			 */
-			_this.AudioPlayer = function(cmd,params,success,error) {
-				return _xbmcCommand('AudioPlayer',_this.settings.namespaceMap.AudioPlayer,cmd,params,success,error);
+			_this.AudioPlayer = function(cmd,params) {
+				return _xbmcCommand('AudioPlayer',_this.settings.namespaceMap.AudioPlayer,cmd,params);
 			};
 
 			/**
 			 * The VideoPlayer namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#VideoPlayer)
 			 * @param cmd
 			 * @param params
-			 * @param success
-			 * @param error
 			 */
-			_this.VideoPlayer = function(cmd,params,success,error) {
-				return _xbmcCommand('VideoPlayer',_this.settings.namespaceMap.VideoPlayer,cmd,params,success,error);
+			_this.VideoPlayer = function(cmd,params) {
+				return _xbmcCommand('VideoPlayer',_this.settings.namespaceMap.VideoPlayer,cmd,params);
 			};
 
 			/**
 			 * The PicturePlayer namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#PicturePlayer)
 			 * @param cmd
 			 * @param params
-			 * @param success
-			 * @param error
 			 */
-			_this.PicturePlayer = function(cmd,params,success,error) {
-				return _xbmcCommand('PicturePlayer',_this.settings.namespaceMap.PicturePlayer,cmd,params,success,error);
+			_this.PicturePlayer = function(cmd,params) {
+				return _xbmcCommand('PicturePlayer',_this.settings.namespaceMap.PicturePlayer,cmd,params);
 			};
 
 			/**
 			 * The Playlist namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#Playlist)
 			 * @param cmd
 			 * @param params
-			 * @param success
-			 * @param error
 			 */
-			_this.Playlist = function(cmd,params,success,error) {
-				return _xbmcCommand('Playlist',_this.settings.namespaceMap.Playlist,cmd,params,success,error);
+			_this.Playlist = function(cmd,params) {
+				return _xbmcCommand('Playlist',_this.settings.namespaceMap.Playlist,cmd,params);
 			};
 
 			/**
 			 * The AudioPlaylist namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#AudioPlaylist)
 			 * @param cmd
 			 * @param params
-			 * @param success
-			 * @param error
 			 */
-			_this.AudioPlaylist = function(cmd,params,success,error) {
-				return _xbmcCommand('AudioPlaylist',_this.settings.namespaceMap.AudioPlaylist,cmd,params,success,error);
+			_this.AudioPlaylist = function(cmd,params) {
+				return _xbmcCommand('AudioPlaylist',_this.settings.namespaceMap.AudioPlaylist,cmd,params);
 			};
 
 			/**
 			 * The VideoPlaylist namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#VideoPlaylist)
 			 * @param cmd
 			 * @param params
-			 * @param success
-			 * @param error
 			 */
-			_this.VideoPlaylist = function(cmd,params,success,error) {
-				return _xbmcCommand('VideoPlaylist',_this.settings.namespaceMap.VideoPlaylist,cmd,params,success,error);
+			_this.VideoPlaylist = function(cmd,params) {
+				return _xbmcCommand('VideoPlaylist',_this.settings.namespaceMap.VideoPlaylist,cmd,params);
 			};
 
 			/**
 			 * The Files namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#Files)
 			 * @param cmd
 			 * @param params
-			 * @param success
-			 * @param error
 			 */
-			_this.Files = function(cmd,params,success,error) {
-				return _xbmcCommand('Files',_this.settings.namespaceMap.Files,cmd,params,success,error);
+			_this.Files = function(cmd,params) {
+				return _xbmcCommand('Files',_this.settings.namespaceMap.Files,cmd,params);
 			};
 
 			/**
 			 * The AudioLibrary namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#AudioLibrary)
 			 * @param cmd
 			 * @param params
-			 * @param success
-			 * @param error
 			 */
-			_this.AudioLibrary = function(cmd,params,success,error) {
-				return _xbmcCommand('AudioLibrary',_this.settings.namespaceMap.AudioLibrary,cmd,params,success,error);
+			_this.AudioLibrary = function(cmd,params) {
+				return _xbmcCommand('AudioLibrary',_this.settings.namespaceMap.AudioLibrary,cmd,params);
 			};
 
 			/**
 			 * The VideoLibrary namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#VideoLibrary)
 			 * @param cmd
 			 * @param params
-			 * @param success
-			 * @param error
 			 */
-			_this.VideoLibrary = function(cmd,params,success,error) {
-				return _xbmcCommand('VideoLibrary',_this.settings.namespaceMap.VideoLibrary,cmd,params,success,error);
+			_this.VideoLibrary = function(cmd,params) {
+				return _xbmcCommand('VideoLibrary',_this.settings.namespaceMap.VideoLibrary,cmd,params);
 			};
 
 			/**
@@ -437,33 +378,64 @@
 			 * See also (@link http://wiki.xbmc.org/index.php?title=InfoLabels) for all the various InfoLabels
 			 * @param cmd
 			 * @param params
-			 * @param success
-			 * @param error
 			 */
-			_this.System = function(cmd,params,success,error) {
-				return _xbmcCommand('System',_this.settings.namespaceMap.System,cmd,params,success,error);
+			_this.System = function(cmd,params) {
+				return _xbmcCommand('System',_this.settings.namespaceMap.System,cmd,params);
 			};
 
 			/**
 			 * The XBMC namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#XBMC)
 			 * @param cmd
 			 * @param params
-			 * @param success
-			 * @param error
 			 */
-			_this.XBMC = function(cmd,params,success,error) {
-				return _xbmcCommand('XBMC',_this.settings.namespaceMap.XBMC,cmd,params,success,error);
+			_this.XBMC = function(cmd,params) {
+				return _xbmcCommand('XBMC',_this.settings.namespaceMap.XBMC,cmd,params);
 			};
 
 			/**
 			 * The Input namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#Input)
 			 * @param cmd
 			 * @param params
-			 * @param success
-			 * @param error
 			 */
-			_this.Input = function(cmd,params,success,error) {
-				return _xbmcCommand('Input',_this.settings.namespaceMap.Input,cmd,params,success,error);
+			_this.Input = function(cmd,params) {
+				return _xbmcCommand('Input',_this.settings.namespaceMap.Input,cmd,params);
+			};
+
+			//*************************************************************************
+			//* Public XBMC Helper Methods
+			//*************************************************************************
+
+			/**
+			 * Given one or more info labels, retrieve and return them
+			 * @param label One or more labels. Accepts string or array
+			 */
+			_this.getInfoLabels = function(label,async) {
+				var _labels = label;
+				var _singleLabel = false;
+				var _result = [];
+
+				if (!$.isArray(_labels)){
+					_labels = new Array(_labels);
+					_singleLabel = true;
+				}
+
+				//	Make the call...
+				_this.System( 'getInfoLabels', {
+					params : {
+						labels : _labels
+					},
+
+					success : function(response) {
+						if (response.result) {
+							_result = ( _singleLabel ? response.result[label] : response.result );
+						}
+					},
+
+					//	Synchronous unless otherwise specified
+					async : true === async
+				});
+
+				return _result;
 			};
 
 			//*************************************************************************
