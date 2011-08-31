@@ -146,7 +146,7 @@
 
 			//	Initialize jsonRPC plug-in
 			$.jsonRPC.setup({
-				endPoint: '/jsonrpc'
+				endPoint: 'http://' + _this.settings.serverHostName + ':' + _this.settings.serverPort + '/jsonrpc'
 			});
 
 			/**
@@ -238,137 +238,6 @@
 
 			return _result;
 		};
-
-		//*************************************************************************
-		//* Public XBMC Namespace Methods
-		//*************************************************************************
-
-//		/**
-//		 * The JSONRPC namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#XBMC)
-//		 * @param cmd
-//		 * @param params
-//		 */
-//		_this.JSONRPC = function(cmd, params) {
-//			return _xbmcCommand('JSONRPC', cmd, params);
-//		};
-//
-//		/**
-//		 * The Player namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#Player)
-//		 * @param cmd
-//		 * @param options
-//		 */
-//		_this.Player = function(cmd, options) {
-//			return _xbmcCommand('Player', cmd, options);
-//		};
-//
-//		/**
-//		 * The AudioPlayer namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#AudioPlayer)
-//		 * @param cmd
-//		 * @param options
-//		 */
-//		_this.AudioPlayer = function(cmd, options) {
-//			return _xbmcCommand('AudioPlayer', cmd, options);
-//		};
-//
-//		/**
-//		 * The VideoPlayer namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#VideoPlayer)
-//		 * @param cmd
-//		 * @param options
-//		 */
-//		_this.VideoPlayer = function(cmd, options) {
-//			return _xbmcCommand('VideoPlayer', cmd, options);
-//		};
-//
-//		/**
-//		 * The PicturePlayer namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#PicturePlayer)
-//		 * @param cmd
-//		 * @param options
-//		 */
-//		_this.PicturePlayer = function(cmd, options) {
-//			return _xbmcCommand('PicturePlayer', cmd, options);
-//		};
-//
-//		/**
-//		 * The Playlist namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#Playlist)
-//		 * @param cmd
-//		 * @param options
-//		 */
-//		_this.Playlist = function(cmd, options) {
-//			return _xbmcCommand('Playlist', cmd, options);
-//		};
-//
-//		/**
-//		 * The AudioPlaylist namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#AudioPlaylist)
-//		 * @param cmd
-//		 * @param options
-//		 */
-//		_this.AudioPlaylist = function(cmd, options) {
-//			return _xbmcCommand('AudioPlaylist', cmd, options);
-//		};
-//
-//		/**
-//		 * The VideoPlaylist namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#VideoPlaylist)
-//		 * @param cmd
-//		 * @param options
-//		 */
-//		_this.VideoPlaylist = function(cmd, options) {
-//			return _xbmcCommand('VideoPlaylist', cmd, options);
-//		};
-//
-//		/**
-//		 * The Files namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#Files)
-//		 * @param cmd
-//		 * @param options
-//		 */
-//		_this.Files = function(cmd, options) {
-//			return _xbmcCommand('Files', cmd, options);
-//		};
-//
-//		/**
-//		 * The AudioLibrary namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#AudioLibrary)
-//		 * @param cmd
-//		 * @param options
-//		 */
-//		_this.AudioLibrary = function(cmd, options) {
-//			return _xbmcCommand('AudioLibrary', cmd, options);
-//		};
-//
-//		/**
-//		 * The VideoLibrary namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#VideoLibrary)
-//		 * @param cmd
-//		 * @param options
-//		 */
-//		_this.VideoLibrary = function(cmd, options) {
-//			return _xbmcCommand('VideoLibrary', cmd, options);
-//		};
-//
-//		/**
-//		 * The System namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#System)
-//		 * See also (@link http://wiki.xbmc.org/index.php?title=InfoLabels) for all the various InfoLabels
-//		 * @param cmd
-//		 * @param options
-//		 */
-//		_this.System = function(cmd, options) {
-//			return _xbmcCommand('System', cmd, options);
-//		};
-//
-//		/**
-//		 * The XBMC namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#XBMC)
-//		 * @param cmd
-//		 * @param options
-//		 */
-//		_this.XBMC = function(cmd, options) {
-//			return _xbmcCommand('XBMC', cmd, options);
-//		};
-//
-//		/**
-//		 * The Input namespace (@link http://wiki.xbmc.org/index.php?title=JSON_RPC#Input)
-//		 * @param cmd
-//		 * @param options
-//		 */
-//		_this.Input = function(cmd, options) {
-//			return _xbmcCommand('Input', cmd, options);
-//		};
 
 		//*************************************************************************
 		//* And kick it all off by calling init()
