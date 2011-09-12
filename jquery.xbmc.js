@@ -61,9 +61,17 @@
 				'JSONRPC.Introspect' : {}
 			},
 			/**
-			 * @var object An lookup cache of called methods
+			 * @var object A lookup cache of called methods
 			 */
-			_namespaceCache : {}
+			_namespaceCache : {},
+			/**
+			 * @var object A lookup cache for labels
+			 */
+			_labelCache : {},
+			/**
+			 * @var string
+			 */
+			_lastLabel : null
 		};
 
 		/**
@@ -204,11 +212,32 @@
 		//* Public XBMC Helper Methods
 		//*************************************************************************
 
+		_this.getItemList = function(itemType, label) {
+			var _id = itemType + 'id';
+			var _label = label || 'label';
+		};
+
+		/**
+		 * Gets a single info label
+		 * @param label
+		 */
+		_this.getLabel = function( label ) {
+			var _result = false;
+
+			_xbmc.getInfoLabels( label, function(response) {
+				if (response.result) {
+					_result = response.result[label];
+				}
+			}, false);
+
+			return _result;
+		};
+
 		/**
 		 * Given one or more info labels, retrieve and return them
 		 * @param label One or more labels. Accepts string or array
 		 */
-		_this.getInfoLabels = function(label, async) {
+		_this.getInfoLabels = function(label, callback, async) {
 			var _labels = label;
 			var _singleLabel = false;
 			var _result =
@@ -226,17 +255,11 @@
 					labels : _labels
 				},
 
-				success : function(response) {
-					if (response.result) {
-						_result = ( _singleLabel ? response.result[label] : response.result );
-					}
-				},
+				success : callback,
 
 				//	Synchronous unless otherwise specified
 				async : true === async
 			});
-
-			return _result;
 		};
 
 		//*************************************************************************
