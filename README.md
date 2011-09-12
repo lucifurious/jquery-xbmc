@@ -32,7 +32,7 @@ The plug-in is contained within a single file. You can download it here or clone
 
 Download (if you haven't already) the JSON-RPC plug-in from [here](https://github.com/datagraph/jquery-jsonrpc/).
 
-Add a script tag for each plug-in to your page before the </BODY> tag or in your <HEAD>. It'd probably be best if you included jquery-jsonrpc <em>before</em> this plug-in.
+Add a script tag for each plug-in to your page before the &gt;/BODY&lt; tag or in your &gt;HEAD&lt;. It'd probably be best if you included jquery-jsonrpc <em>before</em> this plug-in.
 
 ## Making Calls
 
