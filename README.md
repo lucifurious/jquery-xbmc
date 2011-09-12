@@ -49,15 +49,11 @@ Each call accepts two arguments. The first is the name of the namespace method t
 
 The basic call format is then:
 
-<code>
 	yourApiObject.namespace('command',parameters)
-</code>
 
 ### Example
 
-<code>
 	_xbmc.VideoPlayer('playPause');
-</code>
 
 This call would pause or play the currently playing video.
 
